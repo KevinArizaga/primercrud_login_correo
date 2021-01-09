@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universidad</title>
+    <link rel="stylesheet" th:href="@{/css/agregar.css}">
+    <script>d</script>
+</head>
+<body>
+<header class="header">
+    <div class="header-panel">
+        <span class="helper"></span>
+        <img th:src="@{/imagenes/Isotipo.png}" alt="Logo" class="header-logo">
+        <h1>Universidad Autonoma de Baja California</h1>
+    </div>
+    <div class="container">
+        <h1>Agregar Intendente</h1>
+        <p>Antes de guardar los datos, verifica que todos los campos esten llenos.</p>
+        <form th:object="${intendente}" th:action="@{/university/intendente/add}" method="post">
+            <div class="container-global-form">
+                <div class="container-form">
+                    <label class="text-label" for="firstName">Nombre</label>
+                    <input class="text-input" th:field="*{fisrtName}" id="firstName" placeholder="Primer nombre"
+                           type="text">
+                </div>
+                <div class="container-form">
+                    <label class="text-label" for="lastName">Apellido</label>
+                    <input class="text-input" th:field="*{lastName}" id="lastName" placeholder="Apellido paterno"
+                           type="text"></input>
+                </div>
+                <div class="container-form">
+                    <label class="text-label" for="birthDate">Fecha nacimiento</label>
+                    <input class="text-input" th:field="*{birthDate}" id="birthDate" placeholder="" type="date">
+                </div>
+                <div class="container-form">
+                    <label class="text-label" for="salario">Salario</label>
+                    <input class=text-input th:field="*{salario}" id="salario" placeholder="$1500" type="number">
+                </div>
+            </div>
+            <div class="container-addPersonal">
+                <button class="addPersonal" type="submit">Guardar</button>
+                <a class="addPersonal" th:href="@{/university/index}">Mostrar los datos</a>
+            </div>
+        </form>
+    </div>
+</header>
+</body>
+</html>

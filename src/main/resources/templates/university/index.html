@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Universidad</title>
+    <link rel="stylesheet" th:href="@{/css/master.css}">
+<!--    <script>d</script>-->
+</head>
+<body>
+<header class="header">
+    <div class="header-panel">
+        <span class="helper"></span>
+        <img th:src="@{/imagenes/Isotipo.png}" alt="Logo" class="header-logo">
+        <h1>Universidad Autonoma de Baja California</h1>
+    </div>
+    <div class="container">
+        <h1>Contenido</h1>
+        <p>Muestra los integrantes que pertenecen a la Universidad Autonoma de Baja California, que pueden ir desde
+            personal administrativo, empleados y alumnos.</p>
+        <table class="table">
+            <thead>
+            <tr class="table-tr">
+                <th>Matricula</th>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha nacimiento</th>
+                <th>Curso</th>
+                <th>Salario</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="persona: ${personas}">
+                <td th:text="${persona.getMatricula()}"></td>
+                <td th:text="${persona.getTypePersona()}"></td>
+                <td th:text="${persona.getFisrtName()}"></td>
+                <td th:text="${persona.getLastName()}"></td>
+                <td th:text="${persona.getBirthDate()}"></td>
+                <td th:text="${persona.getCourse()}"></td>
+                <td th:text="${persona.getSalario()}"></td>
+                <td style="text-align: center"><a class="modificar-button"
+                                                  th:href="@{/university/edit/{matricula}(matricula=${persona.getMatricula()})}">Modificar</a>
+                </td>
+                <td><a class="delete-button"
+                       th:href="@{/university/delete/{matricula}(matricula=${persona.getMatricula()})}">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="container-addPersonal">
+            <a class="addPersonal" th:href="@{/university/alumno/add}">Agregar Alumno</a>
+            <a class="addPersonal" th:href="@{/university/profesor/add}">Agregar Profesor</a>
+            <a class="addPersonal" th:href="@{/university/intendente/add}">Agregar Intendente</a>
+        </div>
+    </div>
+</header>
+</body>
+</html>
